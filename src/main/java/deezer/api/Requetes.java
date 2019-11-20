@@ -85,7 +85,7 @@ public class Requetes {
 
 	}
 
-	public static void rechercheTitre(String titre, String artiste) throws IOException, SQLException {
+	public static void rechercheTitre(String titre, String artiste, int idUser) throws IOException, SQLException {
 
 		String titreTemp = titre.replaceAll(" ", "%20");
 		String artisteTemp = artiste.replaceAll(" ", "%20");
@@ -117,9 +117,7 @@ public class Requetes {
 				if (titreChanson.toLowerCase().equals(titre.toLowerCase())
 						&& nomArtiste.toLowerCase().equals(artiste.toLowerCase())) {
 
-					System.out.println("titre = " + titreChanson + "(" + idTitre + ")" + " artiste= " + nomArtiste + "("
-							+ idArtiste + ")" + "album = " + nomAlbum + "(" + idAlbum + ")");
-					RequetesHistorique.ajouterHistorique(idArtiste, idTitre, idAlbum, 3);// 3 à modifier
+					RequetesHistorique.ajouterHistorique(idArtiste, idTitre, idAlbum, idUser);// 3 à modifier
 					Parametres.afficherTable("historique");
 					lireId(idTitre);//à enlever
 					break;
@@ -162,7 +160,7 @@ public class Requetes {
 		System.out.println("artiste de la musique :");
 		String artisteMusique = sc.nextLine();
 
-		rechercheTitre(titreMusique, artisteMusique);
+		rechercheTitre(titreMusique, artisteMusique, 11);
 		// lireId(1104580);
 	}
 }

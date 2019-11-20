@@ -33,12 +33,12 @@ public class RequetesUtilisateur {
 		PreparedStatement stmt = Parametres.getConnexion().prepareStatement("Select * from utilisateur where ID_Utilisateur=?");
 		stmt.setInt(1, id);
 		ResultSet result=stmt.executeQuery();
-		
-		String artiste =result.getString("Artiste_Utilisateur");
+		result.next();
+
 		
 		Utilisateur currentUser= new Utilisateur();
 		currentUser.setArtiste(result.getString("Artiste_Utilisateur"));
-		currentUser.setTitre(result.getString("Tite_Utilisateur"));
+		currentUser.setTitre(result.getString("Titre_Utilisateur"));
 		currentUser.setNom(result.getString("Nom_Utilisateur"));
 		currentUser.setPrenom(result.getString("Prenom_Utilisateur"));
 		currentUser.setId(id);
@@ -69,6 +69,6 @@ public class RequetesUtilisateur {
 		/*Utilisateur Jacques = new Utilisateur( "Nono", "Jacques", "U2", "One");	
 		ajouterUtilisateur(Jacques);
 		afficherTable("utilisateur");*/
-		Requetes.rechercheTitre(favoris(11).getTitre(),favoris(11).getArtiste());
+		Requetes.rechercheTitre(favoris(11).getTitre(),favoris(11).getArtiste(), 11);
 	}
 }

@@ -120,7 +120,7 @@ public class Menu {
 				String titreMusique = scan.nextLine();
 				System.out.println("artiste de la musique :");
 				String artisteMusique = scan.nextLine();
-				Requetes.rechercheTitre(titreMusique, artisteMusique);
+				Requetes.rechercheTitre(titreMusique, artisteMusique, idUtilisateur);
 				
 				break;
 			case 2:
@@ -130,7 +130,7 @@ public class Menu {
 				break;
 			case 3:
 				Requetes.rechercheTitre(RequetesUtilisateur.favoris(idUtilisateur).getTitre(),
-						RequetesUtilisateur.favoris(idUtilisateur).getArtiste());
+						RequetesUtilisateur.favoris(idUtilisateur).getArtiste(), idUtilisateur);
 				break;
 			case 4:
 				System.out.println("Retour à l'accueil");
