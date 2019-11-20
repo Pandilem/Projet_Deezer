@@ -13,6 +13,8 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import deezer.jdbc.Parametres;
+import deezer.jdbc.RequetesHistorique;
 import deezer.jdbc.RequetesUtilisateur;
 
 public class Requetes {
@@ -117,8 +119,8 @@ public class Requetes {
 
 					System.out.println("titre = " + titreChanson + "(" + idTitre + ")" + " artiste= " + nomArtiste + "("
 							+ idArtiste + ")" + "album = " + nomAlbum + "(" + idAlbum + ")");
-					RequetesUtilisateur.ajouterHistorique(idArtiste, idTitre, idAlbum, 3);// 3 à modifier
-					RequetesUtilisateur.afficherTable("historique");
+					RequetesHistorique.ajouterHistorique(idArtiste, idTitre, idAlbum, 3);// 3 à modifier
+					Parametres.afficherTable("historique");
 					lireId(idTitre);//à enlever
 					break;
 				}

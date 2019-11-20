@@ -68,10 +68,12 @@ public class Menu {
 	}
 
 	public static void menuProfil() {
-		afficherMenu();
+		
 		int choix;
 		boolean flag = true;
 		while (flag == true) {
+			afficherMenu();
+			System.out.println("\nQuel est votre choix ?");
 			choix = Integer.parseInt(scan.nextLine());
 			switch (choix) {
 			case 1:
@@ -103,10 +105,12 @@ public class Menu {
 	}
 
 	public static void rechercher() {
-		afficherMenu();
+		
 		int choix;
 		boolean flag = true;
 		while (flag == true) {
+			afficherMenu();
+			System.out.println("\nQuel est votre choix ?");
 			choix = Integer.parseInt(scan.nextLine());
 			switch (choix) {
 			case 1:
@@ -136,7 +140,7 @@ public class Menu {
 		int choix;
 		while (flag == true) {
 			afficherMenu();
-			System.out.println("Quel est votre choix ?");
+			System.out.println("\nQuel est votre choix ?");
 			choix = Integer.parseInt(scan.nextLine());
 			switch (choix) {
 			case 1:
