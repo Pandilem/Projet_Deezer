@@ -33,3 +33,5 @@ bin/
 .settings
 .project
 .classpath
+src/main/java/jdbc/Parametres
+sample.json
