@@ -111,26 +111,25 @@ public class Requetes {
 				int idArtiste = artisteObject.getInt("id");
 
 				JSONObject albumObject = currentObject.getJSONObject("album");
-				String nomAlbum = albumObject.getString("title");
+
 				int idAlbum = albumObject.getInt("id");
 
 				if (titreChanson.toLowerCase().equals(titre.toLowerCase())
 						&& nomArtiste.toLowerCase().equals(artiste.toLowerCase())) {
 
 					RequetesHistorique.ajouterHistorique(idArtiste, idTitre, idAlbum, idUser);// 3 Ã  modifier
-					Parametres.afficherTable("historique");
-					lireId(idTitre);//Ã  enlever
+					lireId(idTitre);
 					break;
 				}
 				compteur++;
 				
 			}
 			if (data.length()==compteur) {
-				System.out.println("Pas de résultats exacte trouvé");
+				System.out.println("Pas de rÃ©sultat exact trouvÃ©");
 			}
 			
 		} else {
-			System.out.println("Pas de résultats");
+			System.out.println("Pas de rÃ©sultat");
 		}
 	}
 
@@ -155,7 +154,7 @@ public class Requetes {
 	public static void main(String[] args) throws MalformedURLException, IOException, SQLException {
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Quel sont la musique et artiste recherchés?\nTitre de la musique :");
+		System.out.println("Quels sont la musique et l'artiste recherchÃ©s?\nTitre de la musique :");
 		String titreMusique = sc.nextLine();
 		System.out.println("artiste de la musique :");
 		String artisteMusique = sc.nextLine();

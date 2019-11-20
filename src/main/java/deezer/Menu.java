@@ -45,7 +45,7 @@ public class Menu {
 	}
 
 	public static int choixConnexion() throws SQLException {
-		System.out.println("Avez-vous dÈj‡ un compte ? oui/non");
+		System.out.println("Avez-vous d√©j√† un compte ? oui/non");
 		boolean c = false;
 		String choix = scan.nextLine();
 		if (choix.contentEquals("non")||choix.contentEquals("n")) {
@@ -55,9 +55,9 @@ public class Menu {
 			String nom = scan.nextLine();
 			System.out.print("Ecrivez votre prenom: ");
 			String prenom = scan.nextLine();
-			System.out.print("Ecrivez votre artiste/groupe prÈfÈrÈ: ");
+			System.out.print("Ecrivez votre artiste/groupe pr√©f√©r√©: ");
 			String artiste = scan.nextLine();
-			System.out.print("Ecrivez votre musique prÈfÈrÈ: ");
+			System.out.print("Ecrivez votre musique pr√©f√©r√©: ");
 			String titre = scan.nextLine();
 			Utilisateur newUtilisateur = new Utilisateur(nom, prenom, artiste, titre);
 			RequetesUtilisateur.ajouterUtilisateur(newUtilisateur);
@@ -69,33 +69,33 @@ public class Menu {
 		return idUtilisateur;
 	}
 
-	public static void menuProfil() {
+	public static void menuProfil() throws SQLException{
 		
 		int choix;
 		boolean flag = true;
 		while (flag == true) {
 			afficherMenu();
-			System.out.println("\nQuel est votre choix ?");
+			System.out.println("\nQuel est votre choix dans profil ?");
 			choix = Integer.parseInt(scan.nextLine());
 			switch (choix) {
 			case 1:
-				// modifierUtilisateur();
-				currentMenu = "Connecte";
+				RequetesUtilisateur.modifUtilisateur(idUtilisateur);
 				break;
 			case 2:
 				RequetesUtilisateur.supprimerUtilisateur(idUtilisateur);
-				idUtilisateur=0;
+				idUtilisateur=1;
 				currentMenu = "Accueil";
+				flag=false;
 				break;
 			case 3:
-				System.out.println("Retour ‡ l'accueil");
+				System.out.println("Retour √† l'accueil");
 				currentMenu = "Connecte";
 				flag = false;
 				break;
 			case 4:
 				System.out.println("Deconnexion");
 				currentMenu = "Accueil";
-				idUtilisateur=0;				
+				idUtilisateur=1;				
 				flag = false;
 				break;
 			default:
@@ -112,11 +112,11 @@ public class Menu {
 		boolean flag = true;
 		while (flag == true) {
 			afficherMenu();
-			System.out.println("\nQuel est votre choix ?");
+			System.out.println("\nQuel est votre choix dans recherche?");
 			choix = Integer.parseInt(scan.nextLine());
 			switch (choix) {
 			case 1:
-				System.out.println("Quel sont la musique et artiste recherch√©s?\nTitre de la musique :");
+				System.out.println("Quels sont la musique et l'artiste recherch√©s?\nTitre de la musique :");
 				String titreMusique = scan.nextLine();
 				System.out.println("artiste de la musique :");
 				String artisteMusique = scan.nextLine();
@@ -129,11 +129,12 @@ public class Menu {
 				Requetes.chercher(mot);
 				break;
 			case 3:
-				Requetes.rechercheTitre(RequetesUtilisateur.favoris(idUtilisateur).getTitre(),
-						RequetesUtilisateur.favoris(idUtilisateur).getArtiste(), idUtilisateur);
+				Requetes.rechercheTitre(RequetesUtilisateur.infoUtilisateur(idUtilisateur).getTitre(),
+						RequetesUtilisateur.infoUtilisateur(idUtilisateur).getArtiste(), idUtilisateur);
+				System.out.println();
 				break;
 			case 4:
-				System.out.println("Retour ‡ l'accueil");
+				System.out.println("Retour √† l'accueil");
 				currentMenu = "Accueil";				
 				flag = false;
 				break;

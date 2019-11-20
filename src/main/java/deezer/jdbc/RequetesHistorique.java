@@ -78,16 +78,16 @@ public class RequetesHistorique {
 	}
 
 	public static void supprimerUtilHisto(int id) {
-		//rechercherUtilHisto();
-		//if (rechercherUtilHisto().stmt.execute()== true);
 		try {
 
 			PreparedStatement stmt = Parametres.getConnexion()
-					.prepareStatement("delete from historique where ID_Utilisateur_Appartenir=" + id + ";");
+					.prepareStatement("delete from historique where ID_Utilisateur_Appartenir=" +id+ ";");
+			
+				
 
 			stmt.execute();	
 			stmt.close();
-
+			System.out.println("Supression de l'historique ci-dessus");
 		} catch (SQLException e) {
 			System.out.println("Erreur " + e);
 		}
@@ -99,8 +99,9 @@ public class RequetesHistorique {
 		/*
 		 * ajouterHistorique( 163, 1104580, 119139, 3); afficherTable("historique");
 		 */
-		rechercherUtilHisto(1);
-		rechercherUtilHisto(2);
+		//rechercherUtilHisto(1);
+		//rechercherUtilHisto(2);
+		supprimerUtilHisto(4);
 
 	}
 
