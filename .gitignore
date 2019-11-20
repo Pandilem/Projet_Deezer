@@ -33,5 +33,5 @@ bin/
 .settings
 .project
 .classpath
-src/main/java/deezer/jdbc/Parametres
+Parametres.java
 sample.json
