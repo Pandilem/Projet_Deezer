@@ -16,6 +16,10 @@ public class Utilisateur {
 		this.artiste = artiste;
 		this.titre = titre;
 	}
+	public Utilisateur()
+	{
+		
+	}
 
 
 	public int getId() {

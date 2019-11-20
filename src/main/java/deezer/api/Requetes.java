@@ -128,11 +128,11 @@ public class Requetes {
 				
 			}
 			if (data.length()==compteur) {
-				System.out.println("Pas de rÃ©sultats exacte trouvÃ©");
+				System.out.println("Pas de résultats exacte trouvé");
 			}
 			
 		} else {
-			System.out.println("Pas de rÃ©sultats");
+			System.out.println("Pas de résultats");
 		}
 	}
 
@@ -157,7 +157,7 @@ public class Requetes {
 	public static void main(String[] args) throws MalformedURLException, IOException, SQLException {
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Quel sont la musique et artiste recherchÃ©s?\nTitre de la musique :");
+		System.out.println("Quel sont la musique et artiste recherchés?\nTitre de la musique :");
 		String titreMusique = sc.nextLine();
 		System.out.println("artiste de la musique :");
 		String artisteMusique = sc.nextLine();

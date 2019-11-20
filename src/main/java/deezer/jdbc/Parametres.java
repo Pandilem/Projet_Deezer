@@ -9,9 +9,9 @@ import java.sql.Statement;
 import java.text.MessageFormat;
 
 public class Parametres {
-	private static String password = "Vienvi@1833";
+	private static String password = "34apviSw*";
     private static String user = "root";
-    private static String url = "jdbc:mysql://localhost:3308/deezer?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC"; // 
+    private static String url = "jdbc:mysql://localhost:3306/deezer?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC"; // 
 
     public static String getPassword() {
         return password;

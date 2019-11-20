@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import deezer.api.Requetes;
 import deezer.jdbc.Parametres;
 import deezer.jdbc.RequetesUtilisateur;
 import deezer.model.Utilisateur;
@@ -36,7 +37,7 @@ public class Menu {
 		}
 		if (currentMenu.contentEquals("Recherche")) {
 			System.out.println("- 1 Connaissez-vous le nom de la musique et l'artiste/groupe ?\n" 
-					+ "- 2 Recherche Global\n" 
+					+ "- 2 Recherche Globale\n" 
 					+ "- 3 Rechercher le titre et arstiste en favoris\n"
 				+ "- 4 Accueil\n");
 		}
@@ -44,26 +45,27 @@ public class Menu {
 	}
 
 	public static int choixConnexion() throws SQLException {
-		System.out.println("Avez-vous dï¿½jï¿½ un compte ? oui/non");
+		System.out.println("Avez-vous déjà un compte ? oui/non");
 		boolean c = false;
 		String choix = scan.nextLine();
-		if (choix.contentEquals("oui")) {
-			Parametres.afficherTable("utilisateur");
-			System.out.println("Quel est votre ID ?");
-			idUtilisateur = Integer.parseInt(scan.nextLine());
-		} else {
+		if (choix.contentEquals("non")||choix.contentEquals("n")) {
+			
 			System.out.println("Veuillez renseigner vos informations");
 			System.out.print("Ecrivez votre nom: ");
 			String nom = scan.nextLine();
 			System.out.print("Ecrivez votre prenom: ");
 			String prenom = scan.nextLine();
-			System.out.print("Ecrivez votre artiste/groupe prï¿½fï¿½rï¿½: ");
+			System.out.print("Ecrivez votre artiste/groupe préféré: ");
 			String artiste = scan.nextLine();
-			System.out.print("Ecrivez votre musique prï¿½fï¿½rï¿½: ");
+			System.out.print("Ecrivez votre musique préféré: ");
 			String titre = scan.nextLine();
 			Utilisateur newUtilisateur = new Utilisateur(nom, prenom, artiste, titre);
 			RequetesUtilisateur.ajouterUtilisateur(newUtilisateur);
 		}
+		Parametres.afficherTable("utilisateur");
+		System.out.println("Quel est votre ID ?");
+		idUtilisateur = Integer.parseInt(scan.nextLine());
+		
 		return idUtilisateur;
 	}
 
@@ -81,12 +83,12 @@ public class Menu {
 				currentMenu = "Connecte";
 				break;
 			case 2:
-				// supprimer utilisateur
+				RequetesUtilisateur.supprimerUtilisateur(idUtilisateur);
 				idUtilisateur=0;
 				currentMenu = "Accueil";
 				break;
 			case 3:
-				System.out.println("Retour ï¿½ l'accueil");
+				System.out.println("Retour à l'accueil");
 				currentMenu = "Connecte";
 				flag = false;
 				break;
@@ -104,7 +106,7 @@ public class Menu {
 
 	}
 
-	public static void rechercher() {
+	public static void rechercher() throws SQLException, IOException{
 		
 		int choix;
 		boolean flag = true;
@@ -114,17 +116,24 @@ public class Menu {
 			choix = Integer.parseInt(scan.nextLine());
 			switch (choix) {
 			case 1:
-				// recherche titre et artiste
+				System.out.println("Quel sont la musique et artiste recherchÃ©s?\nTitre de la musique :");
+				String titreMusique = scan.nextLine();
+				System.out.println("artiste de la musique :");
+				String artisteMusique = scan.nextLine();
+				Requetes.rechercheTitre(titreMusique, artisteMusique);
 				
 				break;
 			case 2:
-				// recherche unique
+				System.out.println("Que voulez-vous rechercher ?");
+				String mot=scan.nextLine();
+				Requetes.chercher(mot);
 				break;
 			case 3:
-				//recherche avec tite et artiste utilisateur
+				Requetes.rechercheTitre(RequetesUtilisateur.favoris(idUtilisateur).getTitre(),
+						RequetesUtilisateur.favoris(idUtilisateur).getArtiste());
 				break;
 			case 4:
-				System.out.println("Retour ï¿½ l'accueil");
+				System.out.println("Retour à l'accueil");
 				currentMenu = "Accueil";				
 				flag = false;
 				break;
