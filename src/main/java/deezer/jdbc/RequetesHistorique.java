@@ -13,7 +13,8 @@ public class RequetesHistorique {
 		try {
 
 			PreparedStatement stmt = Parametres.getConnexion().prepareStatement(
-					"INSERT INTO historique (Artiste_Historique, Album_Historique, Titre_Historique, ID_Utilisateur_Appartenir) values(?,?,?,?)");
+					"INSERT INTO historique (Artiste_Historique, Album_Historique, Titre_Historique, "
+					+ "ID_Utilisateur_Appartenir) values(?,?,?,?)");
 
 			stmt.setInt(1, idArtiste);
 			stmt.setInt(2, idAlbum);
