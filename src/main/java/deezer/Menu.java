@@ -6,27 +6,30 @@ import java.util.Scanner;
 
 import deezer.api.Requetes;
 import deezer.jdbc.Parametres;
+import deezer.jdbc.RequetesHistorique;
 import deezer.jdbc.RequetesUtilisateur;
 import deezer.model.Utilisateur;
 
 public class Menu {
 	public static Scanner scan = new Scanner(System.in);
 	public static String currentMenu = "Accueil";
-	public static int idUtilisateur;
+	public static int idUtilisateur=1;
 
 	public static void afficherMenu() {
 		if (currentMenu.contentEquals("Accueil")) {
 			System.out.println(
 					"- 1 Connexion\n" 
 			+ "- 2 Rechercher une musique\n" 
-			+ "- 3 Voir l'historique\n" 
-			+ "- 4 Quitter");
+			+ "- 3 Voir l'historique général\n" 
+			+ "- 4 Afficher votre historique\n"
+			+ "- 5 Quitter");
 		}
 		if (currentMenu.contentEquals("Connecte")) {
 			System.out.println(
 					"- 1 Profil\n" 
 			+ "- 2 Rechercher une musique\n" 
-			+ "- 3 Voir l'historique\n" 
+			+ "- 3 Voir l'historique général\n" 
+			+ "- 4 Afficher votre historique\n"
 			+ "- 4 Quitter");
 		}
 		if (currentMenu.contentEquals("Profil")) {
@@ -36,7 +39,7 @@ public class Menu {
 				+ "- 4 Deconnexion\n");
 		}
 		if (currentMenu.contentEquals("Recherche")) {
-			System.out.println("- 1 Connaissez-vous le nom de la musique et l'artiste/groupe ?\n" 
+			System.out.println("- 1 Recherche du nom de la musique et l'artiste/groupe\n" 
 					+ "- 2 Recherche Globale\n" 
 					+ "- 3 Rechercher le titre et arstiste en favoris\n"
 				+ "- 4 Accueil\n");
@@ -170,6 +173,11 @@ public class Menu {
 				Parametres.afficherTable("historique");
 				break;
 			case 4:
+				System.out.println("Historique de l'utilisateur : "+idUtilisateur);
+				RequetesHistorique.rechercherUtilHisto(idUtilisateur);
+				
+				break;
+			case 5:
 				System.out.println("Vous quittez Deezer");
 				flag = false;
 				break;
