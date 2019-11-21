@@ -30,7 +30,7 @@ public class Menu {
 			+ "- 2 Rechercher une musique\n" 
 			+ "- 3 Voir l'historique général\n" 
 			+ "- 4 Afficher votre historique\n"
-			+ "- 4 Quitter");
+			+ "- 5 Quitter");
 		}
 		if (currentMenu.contentEquals("Profil")) {
 			System.out.println("- 1 Modifier Profil\n" 
