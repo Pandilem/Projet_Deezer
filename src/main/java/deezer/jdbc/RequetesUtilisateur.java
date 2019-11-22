@@ -10,7 +10,10 @@ import deezer.api.Requetes;
 import deezer.model.Utilisateur;
 
 public class RequetesUtilisateur {
-
+	/**
+	 * Ajoute un utilisateur dans la base de données
+	 * @param utilisateur contient un objet utilisateur
+	 */
 	public static void ajouterUtilisateur(Utilisateur utilisateur) {
 		try {
 
@@ -29,7 +32,13 @@ public class RequetesUtilisateur {
 			System.out.println("Erreur " + e);
 		}
 	}
-
+	
+	/**
+	 * Renvoi les informations de l'utilisateur grâce a l'id
+	 * @param id utilisateur
+	 * @return retourne un objet utilisateur
+	 * @throws SQLException
+	 */
 	public static Utilisateur infoUtilisateur(int id) throws SQLException {
 
 		PreparedStatement stmt = Parametres.getConnexion()
@@ -47,7 +56,13 @@ public class RequetesUtilisateur {
 
 		return currentUser;
 	}
-
+	/**
+	 * Permet de supprimer l'utilisateur avec l'id préciser en paramètre
+	 * La méthode va vérifier si il existe un historique pour cet utilisateur
+	 * Si c'est le cas la méthode va supprimer cet historique et ensuite supprimer l'utilisateur
+	 * @param id id de l'utilisateur à supprimer
+	 * @throws SQLException
+	 */
 	public static void supprimerUtilisateur(int id) throws SQLException {
 		try {
 			if (RequetesHistorique.rechercherUtilHisto(id) == true) {
@@ -66,7 +81,11 @@ public class RequetesUtilisateur {
 			System.out.println("Erreur " + e);
 		}
 	}
-
+	/**
+	 * Permet de modifier l'artiste et le titre d'un utilisateur 
+	 * @param id: id de l'utilisateur qu'on veut modifier
+	 * @throws SQLException
+	 */
 	public static void modifUtilisateur(int id) throws SQLException {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Vous allez modifier le titre et l'artiste/groupe favoris");
@@ -87,6 +106,8 @@ public class RequetesUtilisateur {
 	}
 
 	public static void main(String[] args) throws SQLException, IOException {
+		//TODO faire le test de toutes les fonctions dans le main
+		
 		// RequetesHistorique.supprimerHistorique(1);
 		//supprimerUtilisateur(5);
 		// Parametres.afficherTable("utilisateur");
