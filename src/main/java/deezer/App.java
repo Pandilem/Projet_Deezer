@@ -11,3 +11,4 @@ public class App {
 	Menu.choixMenu();
 	}
 }
+
