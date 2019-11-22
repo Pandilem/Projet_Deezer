@@ -81,6 +81,7 @@ public class RequetesHistorique {
 					}
 					System.out.println();
 			}
+				
 					
 			stmt.close();
 			}else {

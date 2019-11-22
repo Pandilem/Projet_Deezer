@@ -5,3 +5,4 @@ public class Musique {
 	//TODO faire des get et set de la classe
 
 }
+

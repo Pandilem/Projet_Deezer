@@ -15,7 +15,9 @@ public class Historique {
 		this.titre = titre;
 		this.idUser = idUser;
 }
-	//TODO A modifier pour retour le nom de la musique/artiste/album et pas l'ID
+	//TODO A modifier pour retour le nom de la musique/artiste/album 
+	//et pas l'ID pour les méthodes getArtiste/Album/Titre via les méthodes dans RequetesHistorique LireIDArtiste....
+	
 	
 	public int getId() {
 		return id;

@@ -97,6 +97,7 @@ public class Requetes {
 	 * @throws IOException
 	 * @throws SQLException
 	 */
+	
 	//TODO Modifier la méthode pour qu'elle retourne un objet de classe musique.
 	public static void rechercheTitre(String titre, String artiste, int idUser) throws IOException, SQLException {
 
