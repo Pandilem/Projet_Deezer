@@ -8,7 +8,14 @@ import java.sql.Statement;
 import java.text.MessageFormat;
 
 public class RequetesHistorique {
-
+	/**
+	 * Permet d'ajouter une musique avec l'artiste, l'album et l'Id de la personne qui à fait la recherche
+	 * @param idArtiste artiste de la musique
+	 * @param idTitre nom de la musique
+	 * @param idAlbum nom de l'album de la musique
+	 * @param idUser utilisateur qui à fait la recherche
+	 */
+	//TODO remplaceer les paramtères d'ajouterHistorique par une musique : void ajouterHistorique(Utilisateur addUser) {
 	public static void ajouterHistorique(int idArtiste, int idTitre, int idAlbum, int idUser) {
 		try {
 
@@ -28,7 +35,10 @@ public class RequetesHistorique {
 			System.out.println("Erreur " + e);
 		}
 	}
-
+	/**
+	 * Permet de supprimer une ligne dans l'historique
+	 * @param id id de l'historique a supprimer
+	 */
 	public static void supprimerHistorique(int id) {
 		try {
 
@@ -42,7 +52,11 @@ public class RequetesHistorique {
 			System.out.println("Erreur " + e);
 		}
 	}
-
+	/**
+	 * Permet de rechercher l'historique d'un utilisateur grâce a son id
+	 * @param id id de l'utilisateur qu'on recherche
+	 * @return
+	 */
 	public static boolean rechercherUtilHisto(int id) {
 		boolean resultatRequete=false;
 		try {
@@ -77,7 +91,11 @@ public class RequetesHistorique {
 		}
 		return resultatRequete;
 	}
-
+	
+	/**
+	 * Permet de supprimer l'historique d'un utilisateur
+	 * @param id
+	 */
 	public static void supprimerUtilHisto(int id) {
 		try {
 
@@ -95,6 +113,7 @@ public class RequetesHistorique {
 	}
 	
 	public static void main(String[] args) throws SQLException {
+		//TODO écrire tous les tests
 		//supprimerHistorique(3);
 		// Parametres.afficherTable("historique");
 		/*

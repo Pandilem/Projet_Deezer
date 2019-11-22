@@ -51,7 +51,8 @@ public class Requetes {
 	public void setIdAlbum(int idAlbum) {
 		this.idAlbum = idAlbum;
 	}
-
+	
+	
 	private static final String jsonFileName = "sample.json";
 
 	public static void chercher(String mot) throws MalformedURLException, IOException {
@@ -84,7 +85,19 @@ public class Requetes {
 		}
 
 	}
-
+	/**
+	 * recherche un titre de musique et l'artiste dans l'API 
+	 * récupère et parcours un fichier Json pour récupérer les Id titre, Id artiste
+	 * affiche "pas de résultat" si la requête est vide 
+	 * affiche "pas de résultat exact" si le titre et l'artiste ne sont pas strictement identiques
+	 * affiche le titre, l'artiste et l'album recherché et les ajoute dans l'historique avec l'id utilisateur
+	 * @param titre : nom de la musique recherchée
+	 * @param artiste : nom de l'artiste ou du groupe
+	 * @param idUser : id de l'utilisateur
+	 * @throws IOException
+	 * @throws SQLException
+	 */
+	//TODO Modifier la méthode pour qu'elle retourne un objet de classe musique.
 	public static void rechercheTitre(String titre, String artiste, int idUser) throws IOException, SQLException {
 
 		String titreTemp = titre.replaceAll(" ", "%20");
@@ -99,6 +112,7 @@ public class Requetes {
 		JSONArray data = complet.getJSONArray("data");
 		int compteur=0;
 		
+		//vérifie que le Json n'est pas vide
 		if (data.isEmpty() == false) {
 			
 			for (Object object : data) {
@@ -116,7 +130,7 @@ public class Requetes {
 
 				if (titreChanson.toLowerCase().equals(titre.toLowerCase())
 						&& nomArtiste.toLowerCase().equals(artiste.toLowerCase())) {
-
+//TODO supprimer l'ajout dans l'historique
 					RequetesHistorique.ajouterHistorique(idArtiste, idTitre, idAlbum, idUser);// 3 à modifier
 					lireId(idTitre);
 					break;
@@ -124,6 +138,7 @@ public class Requetes {
 				compteur++;
 				
 			}
+			//si le nombre d'éléments parcourus est égal au nombre d'éléments dans le Json 
 			if (data.length()==compteur) {
 				System.out.println("Pas de résultat exact trouvé");
 			}
@@ -132,9 +147,14 @@ public class Requetes {
 			System.out.println("Pas de résultat");
 		}
 	}
-
 	
-
+	/**
+	 * recherche dans l'API l'id correspondant au titre de la musique 
+	 * imprime le String du titre de la musique, le String du nom de l'artiste, le String du nom de l'album correspondant à l'id titre de la musique
+	 * * @param id
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
 	public static void lireId(int id) throws MalformedURLException, IOException {
 		String url = "https://api.deezer.com/track/" + id;
 
@@ -150,7 +170,12 @@ public class Requetes {
 		System.out.println("la chanson : " + titre + ". L'artiste : " + artiste + ". L'album : " + title);
 
 	}
-
+	/**  
+	 * @param args
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public static void main(String[] args) throws MalformedURLException, IOException, SQLException {
 
 		Scanner sc = new Scanner(System.in);
@@ -158,7 +183,6 @@ public class Requetes {
 		String titreMusique = sc.nextLine();
 		System.out.println("artiste de la musique :");
 		String artisteMusique = sc.nextLine();
-
 		rechercheTitre(titreMusique, artisteMusique, 11);
 		// lireId(1104580);
 	}
