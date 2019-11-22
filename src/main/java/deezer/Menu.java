@@ -14,7 +14,9 @@ public class Menu {
 	public static Scanner scan = new Scanner(System.in);
 	public static String currentMenu = "Accueil";
 	public static int idUtilisateur=1;
-
+	/**
+	 * Affiche le menu correspondant à la variable currendMenu
+	 */
 	public static void afficherMenu() {
 		if (currentMenu.contentEquals("Accueil")) {
 			System.out.println(
@@ -46,8 +48,12 @@ public class Menu {
 		}
 		
 	}
-
-	public static int choixConnexion() throws SQLException {
+	/**
+	 * Permet à l'utilisateur de créer un utilisateur dans la base de données 
+	 * ou choisi un utilisateur déjà existant en base
+	 * @throws SQLException
+	 */
+	public static void choixConnexion() throws SQLException {
 		System.out.println("Avez-vous déjà un compte ? oui/non");
 		boolean c = false;
 		String choix = scan.nextLine();
@@ -68,10 +74,11 @@ public class Menu {
 		Parametres.afficherTable("utilisateur");
 		System.out.println("Quel est votre ID ?");
 		idUtilisateur = Integer.parseInt(scan.nextLine());
-		
-		return idUtilisateur;
 	}
-
+	/**
+	 * Permet de se déplacer dans le sous menu profil
+	 * @throws SQLException
+	 */
 	public static void menuProfil() throws SQLException{
 		
 		int choix;
@@ -109,8 +116,11 @@ public class Menu {
 
 	}
 
+	/**
+	 * Permet de se déplacer dans le sous menu recherch
+	 * @throws SQLException
+	 */
 	public static void rechercher() throws SQLException, IOException{
-		
 		int choix;
 		boolean flag = true;
 		while (flag == true) {
@@ -147,7 +157,11 @@ public class Menu {
 			}
 		}
 	}
-
+	
+	/**
+	 * Permet de se déplacer dans le menu
+	 * @throws SQLException
+	 */
 	public static void choixMenu() throws IOException, SQLException {
 		boolean flag = true;
 		int choix;
