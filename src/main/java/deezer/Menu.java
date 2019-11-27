@@ -117,7 +117,7 @@ public class Menu {
 	}
 
 	/**
-	 * Permet de se déplacer dans le sous menu recherch
+	 * Permet de se déplacer dans le sous menu recherche
 	 * @throws SQLException
 	 */
 	public static void rechercher() throws SQLException, IOException{

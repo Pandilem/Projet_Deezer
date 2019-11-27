@@ -15,7 +15,7 @@ public class RequetesHistorique {
 	 * @param idAlbum nom de l'album de la musique
 	 * @param idUser utilisateur qui à fait la recherche
 	 */
-	//TODO remplaceer les paramtères d'ajouterHistorique par une musique : void ajouterHistorique(Utilisateur addUser) {
+	//TODO remplacer les paramètres de ajouterHistorique par une musique : void ajouterHistorique(Utilisateur addUser) {
 	public static void ajouterHistorique(int idArtiste, int idTitre, int idAlbum, int idUser) {
 		try {
 
